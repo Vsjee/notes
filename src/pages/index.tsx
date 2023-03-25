@@ -6,8 +6,11 @@ import Header from "~/components/Header";
 import NoteEditor from "../components/NoteEditor";
 import { api, RouterOutputs } from "~/utils/api";
 import { NoteCard } from "~/components/NoteCard";
+import Welc from "~/components/Welc";
 
 const Home: NextPage = () => {
+  const { data: sessionData } = useSession();
+
   return (
     <>
       <Head>
@@ -17,7 +20,7 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <Header />
-        <Content />
+        {sessionData?.user ? <Content /> : <Welc />}
       </main>
     </>
   );
